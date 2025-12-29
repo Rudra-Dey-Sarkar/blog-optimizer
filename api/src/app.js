@@ -1,7 +1,10 @@
 import express from "express";
+import { connectDB } from "./configs/db.js";
 
+connectDB();
 const app = express();
 app.use(express.json());
+
 
 app.get("/", (req, res) => {
     res.send("API is running");
