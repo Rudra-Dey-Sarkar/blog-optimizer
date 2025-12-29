@@ -1,13 +1,31 @@
 import mongoose from "mongoose";
 
-const articleSchema = new mongoose.Schema({
-    title: String,
-    content: String,
-    version: {
-        type: String,
-        default: "original"
-    },
-    references: [String]
-}, { timestamps: true });
+const articleSchema = new mongoose.Schema(
+    {
+        title: {
+            original: String,
+            optimized: String
+        },
+        content: {
+            original: String,
+            optimized: String
+        },
 
-export const Article = mongoose.model("article", articleSchema);
+        version: {
+            type: String,
+            enum: ["original", "optimized"],
+            default: "original"
+        },
+
+        status: {
+            type: String,
+            enum: ["draft", "published"],
+            default: "draft"
+        },
+
+        references: [String]
+    },
+    { timestamps: true }
+);
+
+export const Article = mongoose.model("Article", articleSchema);
