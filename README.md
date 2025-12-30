@@ -97,7 +97,7 @@ Frontend displays:-
 * **Infra:** Vercel
 
 ## Project Architecture
-<img width="1039" height="847" alt="diagram-export-12-30-2025-8_37_41-PM" src="https://github.com/user-attachments/assets/b5719d86-79b2-4745-ae70-5c864e8bb38e" />
+<img width="1039" height="780" alt="diagram-export-12-30-2025-8_37_41-PM" src="https://github.com/user-attachments/assets/e88ee49c-9baa-4bfd-bae4-849ca33b50d4" />
 
 ## Repository Structure
 
