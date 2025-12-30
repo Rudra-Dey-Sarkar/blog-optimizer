@@ -23,10 +23,10 @@ function Landing() {
                         className="block p-6 bg-white rounded-xl border hover:shadow-sm transition"
                     >
                         <h2 className="text-lg font-medium">
-                            {a.title.original}
+                            {a.title}
                         </h2>
                         <p className="text-sm text-neutral-500 mt-1">
-                            Status: {a.version}
+                            Status:- {a.version}
                         </p>
                     </Link>
                 ))}

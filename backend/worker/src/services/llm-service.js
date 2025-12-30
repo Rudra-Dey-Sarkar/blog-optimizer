@@ -20,6 +20,9 @@ Rules:
 - Do NOT copy text from reference articles.
 - Do NOT introduce new facts.
 - Do NOT change the topic.
+- Retain all pictures and videos urls present in original article and include them in the optimized article.
+- Write in a clear, concise, and engaging manner.
+- Use markdown formatting with appropriate headings, subheadings, bullet points, and code blocks where necessary.
 
 Original Article:
 ${originalContent}
