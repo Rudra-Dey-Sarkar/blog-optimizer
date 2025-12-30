@@ -35,7 +35,7 @@ export const updateArticle = async (req, res) => {
     try {
         const article = await Article.findByIdAndUpdate(
             req.params.id,
-            req.body,
+            { $set: req.body },
             { new: true }
         );
         res.json(article);

@@ -12,15 +12,15 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const startWorker = async () => {
     const articles = await fetchArticlesToOptimize();
-    console.log("Total ", aricles.length, " blogs found");
+    console.log("Total ", articles.length, " blogs found");
 
     for (let i = 0; i < articles.length; i++) {
         const article = articles[i];
 
         console.log(
-            i,
+            i + 1,
             ".Blog :- ",
-            article.title.original,
+            article.title,
             " drafted for optimization."
         );
 
@@ -32,7 +32,7 @@ const startWorker = async () => {
 
         // Search Google for reference articles
         const referenceLinks = await searchGoogle(
-            article.title.original
+            article.title
         );
         // Scrape reference articles
         const referenceArticles = await scrapeReferenceArticles(
@@ -42,7 +42,7 @@ const startWorker = async () => {
         if (referenceArticles.length === 0) {
             console.log(
                 "No usable reference articles found. Skipping optimization for:- ",
-                article.title.original
+                article.title
             );
 
             // revert back to published
@@ -86,9 +86,9 @@ const startWorker = async () => {
         //  All retries failed
         if (!optimizedContent) {
             console.log(
-                i,
+                i + 1, 
                 ".Blog :- ",
-                article.title.original,
+                article.title,
                 "LLM failed. Reverting to published."
             );
 
@@ -104,8 +104,7 @@ const startWorker = async () => {
             await axios.put(
                 `${process.env.BACKEND_URL}/articles/${article._id}`,
                 {
-                    title: { optimized: article.title.original },
-                    content: { optimized: optimizedContent },
+                    "content.optimized": optimizedContent,
                     status: "published",
                     version: "optimized",
                     references: referenceLinks
@@ -114,11 +113,13 @@ const startWorker = async () => {
 
             console.log(
                 "Blog :- ",
-                article.title.original,
+                article.title,
                 "optimized and published."
             );
         }
     }
+
+    console.log("Total ", articles.length, " blogs optimized.");
 };
 
 startWorker();

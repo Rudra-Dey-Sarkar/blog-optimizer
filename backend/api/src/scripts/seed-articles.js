@@ -63,11 +63,10 @@ const seedArticles = async () => {
 
         // seeding to database
         await Article.create({
-            title: {
-                original: articles[i].title
-            },
+            title: articles[i].title,
             content: {
-                original: content
+                original: content,
+                optimized: ""
             },
             status: "published",
             version: "original",
