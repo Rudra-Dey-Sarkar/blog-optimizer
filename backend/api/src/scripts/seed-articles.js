@@ -4,17 +4,7 @@ import { JSDOM } from "jsdom";
 import { Readability } from "@mozilla/readability";
 import { Article } from "../models/articles.js";
 import { connectDB } from "../configs/db.js";
-
-
-const extractContent = async (url) => {
-    const { data: html } = await axios.get(url);
-
-    const dom = new JSDOM(html, { url });
-    const reader = new Readability(dom.window.document);
-    const article = reader.parse();
-
-    return article?.textContent || "";
-};
+import { extractContent } from "../services/content-extractor.js";
 
 const seedArticles = async () => {
     console.log("Seeding started");

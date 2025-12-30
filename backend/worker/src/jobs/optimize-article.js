@@ -1,19 +1,29 @@
 import axios from "axios";
 import dotenv from "dotenv";
-import { searchGoogle } from "../services/google-search.js";
+import { extractContent } from "../services/content-extractor.js";
 
 dotenv.config();
 
 export const fetchArticlesToOptimize = async () => {
-    // const { data } = await axios.get(`${process.env.BACKEND_URL}/articles`);
+    const { data } = await axios.get(`${process.env.BACKEND_URL}/articles`);
+    return data;
+};
 
-    // return data;
+export const scrapeReferenceArticles = async (links) => {
+    const contents = [];
 
-    const links = await searchGoogle(
-        "Chatbots Magic: Beginner’s Guidebook"
-    );
+    for (let i = 0; i < links.length; i++) {
+        const text = await extractContent(links[i]);
 
-    console.log("Reference articles:", links);
+        if (text) {
+            contents.push({
+                url: links[i],
+                content: text
+            });
+        }
+    }
+
+    return contents;
 };
 
 

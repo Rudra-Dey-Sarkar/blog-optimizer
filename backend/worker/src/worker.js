@@ -2,7 +2,7 @@ import { fetchArticlesToOptimize } from "./jobs/optimize-article.js";
 
 const startWorker = async () => {
     // const articles = 
-    await fetchArticlesToOptimize();
+    // await fetchArticlesToOptimize();
 
     // console.log(
     //     "Articles ready for optimization:",
