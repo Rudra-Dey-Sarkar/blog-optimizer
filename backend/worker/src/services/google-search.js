@@ -6,24 +6,21 @@ dotenv.config();
 export const searchGoogle = async (query) => {
     const response = await axios.get("https://serpapi.com/search", {
         params: {
-            q: query,
+            q: `${query} 
+            -site:beyondchats.com 
+            -site:youtube.com 
+            -site:facebook.com 
+            -site:linkedin.com 
+            -site:x.com 
+            -site:instagram.com 
+            -site:pinterest.com
+            blogs and articles`,
             engine: "google",
-            num: 5,
+            num: 10,
+            hl: "en",
             api_key: process.env.SERP_API_KEY
         }
     });
 
-    return response.data.organic_results || [];
-};
-
-export const getBlogLinks = (results) => {
-    return results
-        .filter(item =>
-            item.link &&
-            !item.link.includes("youtube.com") &&
-            !item.link.includes("facebook.com") &&
-            !item.link.includes("linkedin.com")
-        )
-        .slice(0, 2)
-        .map(item => item.link);
+    return response.data.organic_results.slice(0, 2).map(item => item.link) || [];
 };
