@@ -11,19 +11,20 @@ export const fetchArticlesToOptimize = async () => {
 
 export const scrapeReferenceArticles = async (links) => {
     const contents = [];
+    
+    for (const link of links) {
+        try {
+            const text = await extractContent(link);
 
-    for (let i = 0; i < links.length; i++) {
-        const text = await extractContent(links[i]);
-
-        if (text) {
-            contents.push({
-                url: links[i],
-                content: text
-            });
+            if (text && text.length > 500) {
+                contents.push({ url: link, content: text });
+            }
+        } catch (err) {
+            console.log("Skipping blocked article:", link);
         }
+
+        await new Promise(r => setTimeout(r, 2000));
     }
 
     return contents;
 };
-
-
