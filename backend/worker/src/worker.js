@@ -12,12 +12,14 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const startWorker = async () => {
     const articles = await fetchArticlesToOptimize();
+    console.log("Total ", aricles.length, " blogs found");
 
     for (let i = 0; i < articles.length; i++) {
         const article = articles[i];
 
         console.log(
-            "Blog :- ",
+            i,
+            ".Blog :- ",
             article.title.original,
             " drafted for optimization."
         );
@@ -84,7 +86,8 @@ const startWorker = async () => {
         //  All retries failed
         if (!optimizedContent) {
             console.log(
-                "Blog :- ",
+                i,
+                ".Blog :- ",
                 article.title.original,
                 "LLM failed. Reverting to published."
             );
