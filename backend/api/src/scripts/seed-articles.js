@@ -1,7 +1,5 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import { JSDOM } from "jsdom";
-import { Readability } from "@mozilla/readability";
 import { Article } from "../models/articles.js";
 import { connectDB } from "../configs/db.js";
 import { extractContent } from "../services/content-extractor.js";
