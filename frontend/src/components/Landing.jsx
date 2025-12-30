@@ -4,12 +4,26 @@ import { Link } from "react-router-dom";
 
 function Landing() {
     const [articles, setArticles] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        api.get("/articles").then(res => setArticles(res.data));
+        api.get("/articles")
+            .then(res => setArticles(res.data))
+            .finally(() => setLoading(false));
     }, []);
 
-    if (articles.length === 0) {
+    if (loading) {
+        return (
+            <div className="max-w-screen-sm sm:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-8">
+                    Blog Articles
+                </h1>
+                <p className="text-neutral-500">
+                    Loading.....
+                </p>
+            </div>
+        );
+    } else if (articles.length === 0 && !loading) {
         return (
             <div className="max-w-screen-sm sm:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
 
