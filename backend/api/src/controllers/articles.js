@@ -20,6 +20,16 @@ export const getArticles = async (req, res) => {
     }
 }
 
+// get a certain article by ID
+export const getCertainArticle = async (req, res) => {
+    try {
+        const article = await Article.findById(req.params.id);
+        res.json(article);
+    } catch (error) {
+        res.status(500).json({ error: "Server Error" });
+    }
+}
+
 // update an article by ID
 export const updateArticle = async (req, res) => {
     try {
