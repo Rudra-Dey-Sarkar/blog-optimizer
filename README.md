@@ -10,8 +10,8 @@ The project is implemented in  **three phases** :
 
 ## Live Links
 
-* **Frontend:-** *(add once deployed)*
-* **Video:-** *(optional public URL)*
+* **Frontend:-** `https://blog-optimizer.vercel.app/`
+* **Video:-** `https://www.loom.com/share/3f6b770ef0d440709110c3695fbea983`
 
 ## Local Setup Instructions
 
@@ -97,6 +97,7 @@ Frontend displays:-
 * **Infra:** Vercel
 
 ## Project Architecture
+
 <img width="1039" height="780" alt="diagram-export-12-30-2025-8_37_41-PM" src="https://github.com/user-attachments/assets/e88ee49c-9baa-4bfd-bae4-849ca33b50d4" />
 
 ## Repository Structure
