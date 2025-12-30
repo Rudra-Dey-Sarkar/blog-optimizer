@@ -5,7 +5,7 @@ import { router } from "./routes/articles.js";
 
 connectDB();
 const corsOptions = {
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "https://blog-optimizer.vercel.app"],
     optionsSuccessStatus: 200
 };
 
