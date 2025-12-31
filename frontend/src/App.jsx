@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Landing from "./components/Landing";
-import Article from "./components/Article";
-import TopBar from "./components/TopBar";
-import Footer from "./components/Footer";
+import Landing from "./components/landing/landing";
+import Article from "./components/articles/article";
+import TopBar from "./components/top-bar/top-bar";
+import Footer from "./components/footer/footer";
 
 export default function App() {
   return (

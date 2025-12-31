@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { api } from "../api";
+import { api } from "../../api";
 import { Link } from "react-router-dom";
+import { LandingSkeleton } from "./landing-skeleton";
 
 function Landing() {
     const [articles, setArticles] = useState([]);
@@ -18,9 +19,11 @@ function Landing() {
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-8">
                     Blog Articles
                 </h1>
-                <p className="text-neutral-500">
-                    Loading.....
-                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                        <LandingSkeleton key={i} />
+                    ))}
+                </div>
             </div>
         );
     } else if (articles.length === 0 && !loading) {
